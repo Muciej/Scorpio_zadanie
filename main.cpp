@@ -15,8 +15,12 @@ std::unique_ptr<filewrite::FileWriter> writer;
 
 int main() {
     writer = std::make_unique<filewrite::FileWriter>("system_data_readings.txt");
-    saveFromFiles();
-    saveIP();
+    while(true){
+        saveFromFiles();
+        saveIP();
+        system("sleep 1");
+        writer->reopen("system_data_readings.txt");
+    }
     return 0;
 }
 
